@@ -6,9 +6,15 @@ type Props = {
   children: React.ReactChild;
   onClick: () => void;
   withConfirmation?: boolean;
+  disabled?: boolean;
 };
 
-const Button = ({ onClick, children, withConfirmation }: Props) => {
+const Button = ({
+  onClick,
+  children,
+  withConfirmation = false,
+  disabled = false,
+}: Props) => {
   const handleOnClick = useCallback(() => {
     if (withConfirmation) {
       const isConfirmed = window.confirm('Are you sure?');
@@ -22,7 +28,7 @@ const Button = ({ onClick, children, withConfirmation }: Props) => {
   }, [onClick, withConfirmation]);
 
   return (
-    <button className="button" onClick={handleOnClick}>
+    <button disabled={disabled} className="button" onClick={handleOnClick}>
       {children}
     </button>
   );

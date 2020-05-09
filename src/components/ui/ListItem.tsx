@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import Button from './Button';
 
-import { markTodoAsComplete } from '../../store/actions/todos';
+import { markTodoAsComplete, deleteTodo } from '../../store/actions/todos';
 
 import './ListItem.css';
 
@@ -18,12 +18,18 @@ const ListItem = ({ todo }: Props) => {
     dispatch(markTodoAsComplete(todo.id));
   }, [dispatch, todo.id]);
 
+  const handleDelete = useCallback(() => {
+    dispatch(deleteTodo(todo.id));
+  }, [dispatch, todo.id]);
+
   return (
     <div className="list_item">
       <h3>{todo.title}</h3>
       <p>{todo.description}</p>
 
-      <Button onClick={() => {}}>Remove</Button>
+      <Button withConfirmation onClick={handleDelete}>
+        Remove
+      </Button>
 
       {!todo.isCompleted ? (
         <Button withConfirmation onClick={handleMarkTodo}>

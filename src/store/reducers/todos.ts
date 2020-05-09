@@ -1,4 +1,4 @@
-import { MARK_TODO } from '../constants';
+import { MARK_TODO, REMOVE_TODO } from '../constants';
 
 const initialState: Todo[] = [
   {
@@ -58,6 +58,9 @@ export const todosReducer = (state = initialState, action: TodoAction<any>) => {
 
         return todo;
       });
+
+    case REMOVE_TODO:
+      return state.filter((todo) => todo.id !== action.payload);
 
     default:
       return state;

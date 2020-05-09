@@ -29,7 +29,7 @@ const Details = () => {
 
       {isShown ? (
         <Modal onClose={toggle}>
-          <Form toggle={toggle} />
+          <Form day={day} toggle={toggle} />
         </Modal>
       ) : null}
 

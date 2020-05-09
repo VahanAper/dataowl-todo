@@ -4,15 +4,16 @@ import './FormInput.css';
 
 type Props = {
   label: string;
-  onChange: (value: string) => void;
+  onChange: (newData: { [dataKey: string]: string }) => void;
+  dataKey: string;
 };
 
-const FormInput = ({ label, onChange }: Props) => {
+const FormInput = ({ label, onChange, dataKey }: Props) => {
   const handleOnChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => {
-      onChange(e.currentTarget.value);
+      onChange({ [dataKey]: e.currentTarget.value });
     },
-    [onChange],
+    [dataKey, onChange],
   );
 
   return (

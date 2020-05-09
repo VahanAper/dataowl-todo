@@ -32,7 +32,11 @@ export const getDaysArray = (year: number, month: number) => {
 
 export const generateTotalMessage = (todos: Todo[]) => {
   const todosCount = todos.length;
-  const completedTodosCount = todos.filter(todo => !todo.isCompleted).length;
+  const completedTodosCount = todos.filter((todo) => !todo.isCompleted).length;
 
-  return `${todosCount} todo items (${completedTodosCount} of which incomplete)`
-}
+  return `${todosCount} todo items (${completedTodosCount} of which incomplete)`;
+};
+
+export const longFormatDay = (day: string) => {
+  return new Date(day).toDateString();
+};

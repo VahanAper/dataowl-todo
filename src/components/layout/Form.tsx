@@ -3,12 +3,16 @@ import React, { useCallback, useState } from 'react';
 import Button from '../ui/Button';
 import FormInput from '../ui/FormInput';
 
+import { longFormatDay } from '../../utils';
+
 type Props = {
   toggle: () => void;
   day: string;
 };
 
 const Form = ({ toggle, day }: Props) => {
+  const formatedDay = longFormatDay(day);
+
   const [todo, setTodo] = useState({
     title: '',
     description: '',
@@ -31,6 +35,8 @@ const Form = ({ toggle, day }: Props) => {
 
   return (
     <div>
+      <h3>Add a new to do item due to {formatedDay}</h3>
+
       <FormInput
         required
         dataKey="title"

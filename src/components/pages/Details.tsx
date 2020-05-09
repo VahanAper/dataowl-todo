@@ -9,10 +9,11 @@ import Form from '../layout/Form';
 
 import { getTodos } from '../../store/selectors/todos';
 import { useToggle } from '../../hooks';
+import { longFormatDay } from '../../utils';
 
 const Details = () => {
   const { day } = useParams();
-  const formatedDay = new Date(day).toDateString();
+  const formatedDay = longFormatDay(day);
 
   const data = useSelector(getTodos);
   const todos = useMemo(() => {

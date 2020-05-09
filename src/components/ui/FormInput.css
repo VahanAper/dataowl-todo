@@ -7,3 +7,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.form_input_label {
+  font-size: 18px;
+  margin-right: 15px;
+}
+
+.form_input_label_required {
+  color: red;
+}
+
+.form_input_error {
+  color: red;
+  font-size: 12px;
+}

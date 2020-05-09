@@ -5,7 +5,7 @@ import FormInput from '../ui/FormInput';
 
 type Props = {
   toggle: () => void;
-  day: string,
+  day: string;
 };
 
 const Form = ({ toggle, day }: Props) => {
@@ -31,9 +31,15 @@ const Form = ({ toggle, day }: Props) => {
 
   return (
     <div>
-      <FormInput dataKey="title" label="Title" onChange={handleOnChange} />
+      <FormInput
+        required
+        dataKey="title"
+        label="Title"
+        onChange={handleOnChange}
+      />
 
       <FormInput
+        required
         dataKey="description"
         label="Description"
         onChange={handleOnChange}

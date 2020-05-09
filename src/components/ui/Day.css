@@ -3,4 +3,10 @@
   height: 100px;
   padding: 10px;
   border: 1px solid black;
+  position: relative;
+}
+
+.day.active {
+  cursor: pointer;
+  background-color: aqua
 }

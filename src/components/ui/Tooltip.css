@@ -1,0 +1,13 @@
+.tooltip {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border: 1px solid black;
+  background-color: blue;
+  padding: 5px;
+}
+
+.tooltip_message {
+  color: white;
+  font-size: 11px;
+}

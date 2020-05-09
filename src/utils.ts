@@ -29,3 +29,10 @@ export const getDaysArray = (year: number, month: number) => {
     return acc.concat(day);
   }, []);
 };
+
+export const generateTotalMessage = (todos: Todo[]) => {
+  const todosCount = todos.length;
+  const completedTodosCount = todos.filter(todo => !todo.isCompleted).length;
+
+  return `${todosCount} todo items (${completedTodosCount} of which incomplete)`
+}

@@ -5,10 +5,13 @@ import './Day.css';
 
 type Props = {
   day: string;
+  todos: Todo[];
 };
 
-const Day = ({ day }: Props) => {
+const Day = ({ day, todos }: Props) => {
   const formatedDay = new Date(day).getUTCDate();
+
+  console.log('todos ::: ', todos)
 
   return (
     <Link to={'/details/' + day}>

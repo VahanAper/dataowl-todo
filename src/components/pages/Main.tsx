@@ -14,7 +14,7 @@ const Main = () => {
   return (
     <div>
       <Search onSearch={() => {}} />
-      <Calendar month={4} year={2020} />
+      <Calendar data={todos} month={4} year={2020} />
     </div>
   );
 };

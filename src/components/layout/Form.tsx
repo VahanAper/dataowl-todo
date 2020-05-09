@@ -1,9 +1,11 @@
 import React, { useCallback, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Button from '../ui/Button';
 import FormInput from '../ui/FormInput';
 
 import { longFormatDay } from '../../utils';
+import { addTodo } from '../../store/actions/todos';
 
 type Props = {
   toggle: () => void;
@@ -11,6 +13,8 @@ type Props = {
 };
 
 const Form = ({ toggle, day }: Props) => {
+  const dispatch = useDispatch();
+
   const formatedDay = longFormatDay(day);
 
   const [todo, setTodo] = useState({
@@ -38,7 +42,11 @@ const Form = ({ toggle, day }: Props) => {
     [],
   );
 
-  console.log('todo ::: ', todo);
+  const handleAddTodo = useCallback(() => {
+    dispatch(addTodo(todo));
+
+    toggle();
+  }, [dispatch, todo, toggle]);
 
   return (
     <div>
@@ -58,7 +66,7 @@ const Form = ({ toggle, day }: Props) => {
         onChange={handleOnChange}
       />
 
-      <Button disabled={!isValid} onClick={() => {}}>
+      <Button disabled={!isValid} onClick={handleAddTodo}>
         Add
       </Button>
       <Button onClick={toggle}>Cancel</Button>

@@ -1,4 +1,4 @@
-import { MARK_TODO, REMOVE_TODO } from '../constants';
+import { MARK_TODO, REMOVE_TODO, ADD_TODO } from '../constants';
 
 const initialState: Todo[] = [
   {
@@ -61,6 +61,17 @@ export const todosReducer = (state = initialState, action: TodoAction<any>) => {
 
     case REMOVE_TODO:
       return state.filter((todo) => todo.id !== action.payload);
+
+    case ADD_TODO:
+      // If there is no todo, start the id from 1,
+      // otherwise increment by 1
+      const lastId = state[state.length - 1]?.id || 1;
+
+      return state.concat({
+        id: lastId + 1,
+        isCompleted: false,
+        ...action.payload,
+      });
 
     default:
       return state;

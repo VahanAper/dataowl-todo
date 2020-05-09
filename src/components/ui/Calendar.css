@@ -4,3 +4,8 @@
   text-align: center;
   color: white;
 }
+
+.calendar_days {
+  display: flex;
+  flex-wrap: wrap;
+}

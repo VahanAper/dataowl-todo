@@ -19,3 +19,13 @@ export const formatMonthName = (year: number, month: number) => {
 
   return `${monthName} ${year}`;
 };
+
+export const getDaysArray = (year: number, month: number) => {
+  const daysCount = new Date(year, month, 0).getDate();
+
+  return new Array(daysCount).fill(null).reduce((acc, _, i) => {
+    const day = new Date(`${year} ${month} ${i + 1} UTC`).toISOString();
+
+    return acc.concat(day);
+  }, []);
+};

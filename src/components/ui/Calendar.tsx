@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
-import { formatMonthName } from '../../utils';
+import { formatMonthName, getDaysArray } from '../../utils';
+import Day from './Day'
 
 import './Calendar.css';
 
@@ -11,6 +12,13 @@ type Props = {
 
 const Calendar = ({ month, year }: Props) => {
   const header = formatMonthName(year, month);
+  const daysArray = getDaysArray(year, month);
+
+  const days: React.ReactElement[] = useMemo(() => {
+    return daysArray.map((day: string) => {
+      return <Day key={day} day={day} />;
+    });
+  }, [daysArray]);
 
   return (
     <div>
@@ -18,7 +26,7 @@ const Calendar = ({ month, year }: Props) => {
         <h2>{header}</h2>
       </div>
 
-      <div>Day cells goes here</div>
+      <div className="calendar_days">{days}</div>
     </div>
   );
 };

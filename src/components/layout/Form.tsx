@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 import Button from '../ui/Button';
 import FormInput from '../ui/FormInput';
@@ -18,6 +18,13 @@ const Form = ({ toggle, day }: Props) => {
     description: '',
     date: day,
   });
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    const hasEmptyValue = Object.values(todo).some((value) => value === '');
+
+    setIsValid(!hasEmptyValue);
+  }, [todo]);
 
   const handleOnChange = useCallback(
     (newTodo: { [dataKey: string]: string }) => {
@@ -51,7 +58,9 @@ const Form = ({ toggle, day }: Props) => {
         onChange={handleOnChange}
       />
 
-      <Button onClick={() => {}}>Add</Button>
+      <Button disabled={!isValid} onClick={() => {}}>
+        Add
+      </Button>
       <Button onClick={toggle}>Cancel</Button>
     </div>
   );

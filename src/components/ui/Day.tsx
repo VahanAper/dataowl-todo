@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { generateTotalMessage } from '../../utils';
+
 import './Day.css';
 
 type Props = {
@@ -10,13 +12,14 @@ type Props = {
 
 const Day = ({ day, todos }: Props) => {
   const formatedDay = new Date(day).getUTCDate();
-
-  console.log('todos ::: ', todos)
+  const totalMessage = generateTotalMessage(todos);
 
   return (
     <Link to={'/details/' + day}>
       <div className="day">
         <p>{formatedDay}</p>
+
+        <p>{totalMessage}</p>
       </div>
     </Link>
   );

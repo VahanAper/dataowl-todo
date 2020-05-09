@@ -1,0 +1,9 @@
+.form_input {
+  margin: 10px;
+  padding: 10px;
+}
+
+.form_input_wrapper {
+  display: flex;
+  justify-content: space-between;
+}

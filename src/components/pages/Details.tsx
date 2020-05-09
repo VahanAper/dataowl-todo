@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Button from '../ui/Button';
 import List from '../ui/List';
 import Modal from '../ui/Modal';
+import Form from '../layout/Form';
 
 import { getTodos } from '../../store/selectors/todos';
 import { useToggle } from '../../hooks';
@@ -28,7 +29,7 @@ const Details = () => {
 
       {isShown ? (
         <Modal onClose={toggle}>
-          <p>Modal Content</p>
+          <Form toggle={toggle} />
         </Modal>
       ) : null}
 

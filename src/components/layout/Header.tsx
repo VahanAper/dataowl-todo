@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { generateTotalMessage } from '../../utils';
 import { getTodos } from '../../store/selectors/todos';
 
+import './Header.css'
+
 type Props = {
   heading?: string;
 };
@@ -13,10 +15,10 @@ const Header = ({ heading = 'Header' }: Props) => {
   const totalMessage = generateTotalMessage(todos);
 
   return (
-    <header>
-      <h1>{heading}</h1>
+    <header className="header">
+      <h1 className="header_heading">{heading}</h1>
 
-      <div>{totalMessage}</div>
+      <p className="header_total">{totalMessage}</p>
     </header>
   );
 };

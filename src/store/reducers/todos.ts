@@ -1,3 +1,5 @@
+import { MARK_TODO } from '../constants';
+
 const initialState: Todo[] = [
   {
     id: 1,
@@ -45,6 +47,18 @@ const initialState: Todo[] = [
 
 export const todosReducer = (state = initialState, action: TodoAction<any>) => {
   switch (action.type) {
+    case MARK_TODO:
+      return state.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            isCompleted: true,
+          };
+        }
+
+        return todo;
+      });
+
     default:
       return state;
   }

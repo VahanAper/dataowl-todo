@@ -1,19 +1,17 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import Search from '../ui/Search';
 import Calendar from '../ui/Calendar';
 
-import { getTodos } from '../../store/selectors/todos';
+type Props = {
+  todos: Todo[];
+  handleSearch: (searchTerm: string) => void;
+};
 
-const Main = () => {
-  const todos = useSelector(getTodos);
-
-  console.log('todos ::: ', todos);
-
+const Main = ({ todos, handleSearch }: Props) => {
   return (
     <div>
-      <Search onSearch={() => {}} />
+      <Search onSearch={handleSearch} />
       <Calendar data={todos} month={4} year={2020} />
     </div>
   );

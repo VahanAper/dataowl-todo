@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import Button from '../ui/Button';
@@ -7,18 +6,20 @@ import List from '../ui/List';
 import Modal from '../ui/Modal';
 import Form from '../layout/Form';
 
-import { getTodos } from '../../store/selectors/todos';
 import { useToggle } from '../../hooks';
 import { longFormatDay } from '../../utils';
 
-const Details = () => {
+type Props = {
+  todos: Todo[];
+};
+
+const Details = ({ todos }: Props) => {
   const { day } = useParams();
   const formatedDay = longFormatDay(day);
 
-  const data = useSelector(getTodos);
-  const todos = useMemo(() => {
-    return data.filter((todo) => todo.date === day);
-  }, [data, day]);
+  const data = useMemo(() => {
+    return todos.filter((todo) => todo.date === day);
+  }, [day, todos]);
 
   const { isShown, toggle } = useToggle();
 
@@ -34,7 +35,7 @@ const Details = () => {
         </Modal>
       ) : null}
 
-      <List todos={todos} />
+      <List todos={data} />
     </div>
   );
 };

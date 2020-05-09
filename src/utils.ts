@@ -40,3 +40,7 @@ export const generateTotalMessage = (todos: Todo[]) => {
 export const longFormatDay = (day: string) => {
   return new Date(day).toDateString();
 };
+
+export const hasMatch = (text: string, term: string) => {
+  return text.toLocaleLowerCase().match(term.toLocaleLowerCase());
+};

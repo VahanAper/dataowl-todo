@@ -5,12 +5,21 @@ import './Button.css';
 type Props = {
   children: React.ReactChild;
   onClick: () => void;
+  withConfirmation?: boolean;
 };
 
-const Button = ({ onClick, children }: Props) => {
+const Button = ({ onClick, children, withConfirmation }: Props) => {
   const handleOnClick = useCallback(() => {
-    onClick();
-  }, [onClick]);
+    if (withConfirmation) {
+      const isConfirmed = window.confirm('Are you sure?');
+
+      if (isConfirmed) {
+        onClick();
+      }
+    } else {
+      onClick();
+    }
+  }, [onClick, withConfirmation]);
 
   return (
     <button className="button" onClick={handleOnClick}>
